@@ -3,7 +3,7 @@
     ServerName <%= @servername %>
     ServerAlias www.<%= @servername %>
     DocumentRoot /var/www/html/<%= @servername -%>/public_html/
-    ErrorLog /var/log/apache2/<%- @servername -%>/logs/error.log
+    ErrorLog /var/log/apache2/<%= @servername -%>/logs/error.log
     CustomLog /var/log/apache2/<%= @servername -%>/logs/access.log combined
     <Directory /var/www/html/<%= @servername -%>/public_html>
         Require all granted
