@@ -7,5 +7,17 @@ class apache (
     ensure  => present,
   }
         
+  file { 'configuration-file':
+    path    => $confFile,
+    ensure  => file,
+    source  => $confSource,
+    notify  => Service['apache-service'],
+  }
+
+  service { 'apache-service':
+    name          => $apacheName,
+    hasrestart    => true,
+  }
+
 }
 
