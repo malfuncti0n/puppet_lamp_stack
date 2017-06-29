@@ -40,13 +40,15 @@ class { '::php':
        },
       imagick   => {
         provider => apt,
+	package_prefix => 'php-',
       },
       xmlrpc    => {
         provider => apt,
       },
       memcached => {
         provider => apt,
-        header_packages => [ 'libmemcached-devel', ],
+        package_prefix => 'php-',
+        header_packages => [ 'libmemcached-dev', ],
       },
     },
   settings   => {
