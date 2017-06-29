@@ -13,6 +13,7 @@ class wordpress::web {
 	  docroot_group => 'www-data',
 } 
     # Add support for PHP 
-    class {'::apache::mod::php': }
+    class {'::apache::mod::php': 
+}
 
 }
