@@ -43,6 +43,16 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class wordpress {
+	#load configuration file
+	class { 'wordpress::config': }
+	
+	#Install Apache with php support
+	class { 'wordpress::webserver': }
 
+	#Install MySQL
+	class { 'wordpress::dbserver': }
+
+	#Install php modules
+	class { 'wordpress::php': }
 
 }

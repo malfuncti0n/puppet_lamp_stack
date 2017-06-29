@@ -1,6 +1,6 @@
 class wordpress::config {
     #apache configuration
-    $servername=serverexpose.com
+    $servername='serverexpose.com'
 
     #mysql configuration
     $root_password = 'password'

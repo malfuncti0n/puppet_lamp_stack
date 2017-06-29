@@ -1,3 +1,5 @@
+class  wordpress::php { 
+
 class { '::php':
   ensure       => latest,
   manage_repos => true,
@@ -57,3 +59,4 @@ class { '::php':
   },
   }
 
+}
