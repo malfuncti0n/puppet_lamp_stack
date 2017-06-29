@@ -20,16 +20,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', '<%= scope.lookupvar('wordpress::config::db_name') %>');
+define('DB_NAME', '<%= scope.lookupvar('cms::config::db_name') %>');
 
 /** MySQL database username */
-define('DB_USER', '<%= scope.lookupvar('wordpress::config::db_user') %>');
+define('DB_USER', '<%= scope.lookupvar('cms::config::db_user') %>');
 
 /** MySQL database password */
-define('DB_PASSWORD', '<%= scope.lookupvar('wordpress::config::db_user_password') %>');
+define('DB_PASSWORD', '<%= scope.lookupvar('cms::config::db_user_password') %>');
 
 /** MySQL hostname */
-define('DB_HOST', '<%= scope.lookupvar('wordpress::config::db_host') %>');
+define('DB_HOST', '<%= scope.lookupvar('cms::config::db_host') %>');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

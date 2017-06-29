@@ -1,4 +1,4 @@
-class wordpress::webserver {
+class cms::webserver {
 
     # Install Apache
     class {'apache': 
@@ -6,9 +6,9 @@ class wordpress::webserver {
 
     }
 
-	apache::vhost { "${wordpress::config::servername}" :
+	apache::vhost { "${cms::config::servername}" :
 	  port          => '80',
-	  docroot       => "/var/www/html/${wordpress::config::servername}",
+	  docroot       => "/var/www/html/${cms::config::servername}",
 	  docroot_owner => 'www-data',
 	  docroot_group => 'www-data',
 } 

@@ -1,9 +1,9 @@
-class wordpress::wp {
+class cms::wordpress {
 
     # Copy Cms installation to node
     file { '/tmp/latest.tar.gz':
         ensure => present,
-        source => "puppet:///modules/wordpress/latest.tar.gz"
+        source => "puppet:///modules/cms/latest.tar.gz"
     }
 
     # Extract cms
@@ -14,18 +14,18 @@ class wordpress::wp {
         path => ['/bin'],
     }
 
-    # Copy to /var/www/$servername
+    # Copy to /var/www/html/$servername
     exec { 'copy':
-        command => "cp -r /tmp/wordpress/* /var/www/${wordpress::config::servername/}",
+        command => "cp -r /tmp/wordpress/* /var/www/html/${cms::config::servername}/",
         require => Exec['extract'],
         path => ['/bin'],
     }
 
     # Copy template wp.config
-    file { '/var/www/${wordpress::config::servername}/wp-config.php':
+    file { "/var/www/html/${cms::config::servername}/wp-config.php":
         ensure => present,
         require => Exec['copy'],
-        content => template("wordpress/wp-config.php.erb")
+        content => template("cms/wp-config.php.erb")
     }
 }
 

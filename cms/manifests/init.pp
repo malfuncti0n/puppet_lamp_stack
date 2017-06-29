@@ -1,7 +1,7 @@
-# Class: wordpress
+# Class: cms
 # ===========================
 #
-# Full description of class wordpress here.
+# Full description of class cms here.
 #
 # Parameters
 # ----------
@@ -42,17 +42,53 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class wordpress {
+class cms {
 	#load configuration file
-	class { 'wordpress::config': }
+	class { 'cms::config': }
 	
 	#Install Apache with php support
-	class { 'wordpress::webserver': }
+	class { 'cms::webserver': }
 
 	#Install MySQL
-	class { 'wordpress::dbserver': }
+	class { 'cms::dbserver': 
+                require => Notify['PHP Installation Complete']
+	}
 
 	#Install php modules
-	class { 'wordpress::php': }
+	class { 'cms::php': 
+                require => Notify['Apache Installation Complete']
+	}
+
+        #Install Wordpress after apache installation
+        class { 'cms::wordpress': 
+		require => Notify['MySQL Installation Complete']
+	}
+
+        #fix file permittions
+        class { 'cms::permitions':
+                require => Notify['Wordpress Installation Complete']
+        }
+
+
+    # message for mysql installation completion
+    notify { 'MySQL Installation Complete':
+        require => Class['cms::dbserver']
+    }
+
+    # message for apache installation completion
+    notify { 'Apache Installation Complete':
+        require => Class['cms::webserver']
+    }
+
+    # message for php installation completion                
+    notify { 'PHP Installation Complete':
+        require => Class['cms::php']
+    }
+
+
+    # message for wordpress installtion completion
+    notify { 'Wordpress Installation Complete':
+        require => Class['cms::wordpress']
+    }
 
 }
