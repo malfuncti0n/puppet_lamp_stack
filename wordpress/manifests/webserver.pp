@@ -8,7 +8,7 @@ class wordpress::webserver {
 
 	apache::vhost { "${wordpress::config::servername}" :
 	  port          => '80',
-	  docroot       => "/var/www/html/${wordpress::config::severname}",
+	  docroot       => "/var/www/html/${wordpress::config::servername}",
 	  docroot_owner => 'www-data',
 	  docroot_group => 'www-data',
 } 
